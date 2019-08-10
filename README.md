@@ -23,12 +23,11 @@ mutations but the pressure acting on their rate of substitution is only vaguely 
 ### Installation
 <a name="install"/> 
 
-+ ##### Requires
-    + [exonerate](https://www.ebi.ac.uk/about/vertebrate-genomics/software/exonerate)
-    + gawk
-    + [seqkit](https://bioinf.shenwei.me/seqkit/download/)
-    + [codonphyml](https://sourceforge.net/projects/codonphyml/)
-
+#### Requires
++ [exonerate](https://www.ebi.ac.uk/about/vertebrate-genomics/software/exonerate)
++ [seqkit](https://bioinf.shenwei.me/seqkit/download/)
++ [codonphyml](https://sourceforge.net/projects/codonphyml/)
++ gawk
 
 1. [**Download the archive as a zip**](https://github.com/vizkidd/stop_codon_plants/archive/master.zip) and extract it
 2. These flat files from OrthoDB are required to be in same directory as the extracted files
@@ -111,6 +110,14 @@ Pipeline can be started using the START.sh script,
 
 ```{bash}
 sh START.sh <organism_ID> <upper_limit_scale> <cluster_ID> <min_orgs>
+```
+
+```
+*ALL are required*
+<organism_ID> - NCBI Tax ID for organisms which you want to analyze
+<upper_limit_scale> - Max number of sequences in each cluster
+<cluster_ID> - NCBI Tax ID for clusters which you want to analyze
+<min_orgs> - min number of orgs you want in a cluster, 0 if you want to include all clusters
 ```
 
 eg,
