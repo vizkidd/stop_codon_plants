@@ -96,6 +96,7 @@ The overall flow including the misc scripts goes like this
     + [mixture_model.rscript](mixture_model.rscript)
     + [bootstrap.r](bootstrap.r)
     + [plot.r](plot.r)
++ [cleanup.sh](cleanup.sh)
 
 > **NOTE:** Scripts were written for *slurm*, if you don't have slurm modify the sbatch lines in [START.sh](START.sh), [download_data.sh](download_data.sh), [process_data.sh](process_data.sh) and just call the command without sbatch.
 
