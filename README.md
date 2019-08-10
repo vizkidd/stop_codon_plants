@@ -112,12 +112,12 @@ Pipeline can be started using the START.sh script,
 sh START.sh <organism_ID> <upper_limit_scale> <cluster_ID> <min_orgs>
 ```
 
-```
+```diff
 *ALL are required*
-<organism_ID> - NCBI Tax ID for organisms which you want to analyze
-<upper_limit_scale> - Max number of sequences in each cluster
-<cluster_ID> - NCBI Tax ID for clusters which you want to analyze
-<min_orgs> - min number of orgs you want in a cluster, 0 if you want to include all clusters
+- <organism_ID> - NCBI Tax ID for organisms which you want to analyze
+# <upper_limit_scale> - Max number of sequences in each cluster
++ <cluster_ID> - NCBI Tax ID for clusters which you want to analyze
+# <min_orgs> - min number of orgs you want in a cluster, 0 if you want to include all clusters
 ```
 
 eg,
