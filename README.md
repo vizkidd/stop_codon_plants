@@ -1,4 +1,6 @@
-## Evolutionary selective constraints acting on the stop codon across land plants
+## [Evolutionary selective constraints acting on the stop codon across land plants](Manuscript.pdf)
+
+
 
 #### **Table of Contents**
 + [Motivation](#motivation)  
@@ -12,13 +14,13 @@
 
 All genomes are under an evolutionary pressure and struggle to keep the functional portion
 of the DNA. The rate at which favorable genes are retained and deleterious ones are lost is exerted by a
-parameter which is the ratio of synonymous($dS$) to non synonymous($dN$) mutation rates. Substitutions do
+parameter which is the ratio of synonymous(dS) to non synonymous(dN) mutation rates. Substitutions do
 not alter the coded amino acid while mutations do. This makes substitutions helpful and mutations harmful.
-When $\frac{dN}{dS}$ < 1, substitution rate is greater than mutation rate and the gene is said to be under purifying selection. Purifying selection favors synonymous substitutions than non-synonymous mutations thereby preventing change of an amino acid residue at a give position. In conventional models of substitution only the sense(non-stop) codons are accounted for while the non-sense codons are omitted because they do not contribute to amino acid changes. Since stop codons function with varying efficiencies, they can be read-through and have the ability to alter the final protein products. When combined with other
+When dN/dS < 1, substitution rate is greater than mutation rate and the gene is said to be under purifying selection. Purifying selection favors synonymous substitutions than non-synonymous mutations thereby preventing change of an amino acid residue at a give position. In conventional models of substitution only the sense(non-stop) codons are accounted for while the non-sense codons are omitted because they do not contribute to amino acid changes. Since stop codons function with varying efficiencies, they can be read-through and have the ability to alter the final protein products. When combined with other
 mechanisms like ribosome stalling and mRNA regulation, stop codons can indirectly modulate protein
 synthesis. This gives meaning to stop codon preservation and substitution, thereby creating the need
 to include them in standard models of substitution. Stop codons have a low probability of undergoing
-mutations but the pressure acting on their rate of substitution is only vaguely addressed. [*Seioghe et al.*](https://github.com/cseoighe/StopEvol) have introduced a new model which incorporates stop codons into the general Muse & Gaut substitution model. The model is constructed based on the assumption that stop codons are also under selection pressure and co-evolve with the genes. The extended Muse & Gaut model, casually called extMG model, has been applied on mammalian orthologous sequences and 50% of the genes were found to be under purifying selection. In this study the extMG model of substitution, for all 64 codons, is used to estimate $\phi$ (rate of substitution between stop codons) for plant ortholog families under the **Viridiplantae** clade. 
+mutations but the pressure acting on their rate of substitution is only vaguely addressed. [*Seioghe et al.*](https://github.com/cseoighe/StopEvol) have introduced a new model which incorporates stop codons into the general Muse & Gaut substitution model. The model is constructed based on the assumption that stop codons are also under selection pressure and co-evolve with the genes. The extended Muse & Gaut model, casually called extMG model, has been applied on mammalian orthologous sequences and 50% of the genes were found to be under purifying selection. In this study the extMG model of substitution, for all 64 codons, is used to estimate phi (rate of substitution between stop codons) for plant ortholog families under the **Viridiplantae** clade. 
 
 ### Installation
 <a name="install"/> 
@@ -53,7 +55,7 @@ mutations but the pressure acting on their rate of substitution is only vaguely 
       ![][species]
   + [OGs.tab](https://v100.orthodb.org/download/odb10v0_OGs.tab.gz) - Contains information about orthologous groups (***OG***), OG ID [*first column*] & OG name [*last column*]. OG ID has a format of [*cluster_ID*]at[*taxa_node*]
       ![][OGs] 
-  + [levels2species.tab](https://v100.orthodb.org/download/odb10v0_level2species.tab.gz) - Connects NCBI taxa ID [*first column*] to organism IDs (same as species IDs) [*second column*] and also provides information about number of hops & NCBI taxonomic levels [*last column*]
+  + [levels2species.tab](https://v100.orthodb.org/download/odb10v0_level2species.tab.gz) - Connects NCBI taxa node [*first column*] to organism IDs (same as species IDs) [*second column*] and also provides information about number of hops & NCBI taxonomic levels [*last column*]
       ![][levels2species] 
   + [OG2genes.tab](https://v100.orthodb.org/download/odb10v0_OG2genes.tab.gz) - Connects OGs to genes. Contains OG IDs [*first column*] & gene IDs [*last column*]. Each gene ID is of the format [*organism_ID*]:[*gene_ID*]. (This can be used to accumulate clusters based on organisms or genes.)
       ![][OG2genes]
@@ -98,9 +100,7 @@ The overall flow including the misc scripts goes like this
     + [plot.r](plot.r)
 + [cleanup.sh](cleanup.sh)
 
-> **NOTE:** Scripts were written for *slurm*, if you don't have slurm modify the sbatch lines in [START.sh](START.sh), [download_data.sh](download_data.sh), [process_data.sh](process_data.sh) and just call the command without sbatch.
-
-> **NOTE:** **Scripts for Phytomine and ensemble have also been provided, check Misc
+> **NOTE:** **Scripts for Phytomine and ensemble have also been provided, check <a href="file:Misc/">Misc/</a>
 
 ### Usage & Flow
 <a name="usage"/> 
@@ -125,14 +125,18 @@ eg,
 
 >sh START.sh <span style="color: #ff0000">3193</span> 10 <span style="color: #00ff00">33090</span> 20
 
-Both the <span style="color: #ff0000">organism</span> and the <span style="color: #00ff00">cluster</span> IDs can be selected from the first column of the levels.tab file. For this study, organisms in <span style="color: #ff0000">Embryophyta</span> and the clusters in <span style="color: #00ff00">Viridiplantae</span> are selected.
+> **NOTE:** Scripts were written for *slurm*, if you don't have slurm modify the sbatch lines in [START.sh](START.sh), [download_data.sh](download_data.sh), [process_data.sh](process_data.sh) and just call the command without sbatch.
+
+> **NOTE:** Both the <span style="color: #ff0000">organism</span> and the <span style="color: #00ff00">cluster</span> IDs can be selected from the first column of the levels.tab file.
+
+For this study, organisms in <span style="color: #ff0000">Embryophyta</span> and the clusters in <span style="color: #00ff00">Viridiplantae</span> are selected.
 
 The pipeline can
 
 + For each cluster
     + Downloads CDS (coding sequences) from NCBI for the cluster.
     + Selects one sequence for each organism in the cluster.
-    + Applies the extended Muse & Gaut model which estimates the $\kappa$, $\omega$ ,$\phi$ & *treescale* for the cluster.
+    + Applies the extended Muse & Gaut model which estimates the kappa, omega , phi & *treescale* for the cluster.
 + For all clusters
     + Applies the mixture model
     + Performs bootstrapping
