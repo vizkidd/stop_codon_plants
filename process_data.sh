@@ -40,9 +40,9 @@ python extract_cluster_sequences.py fasta/$filename/$filename.trimd.fasta fasta/
 
 while IFS= read -r key
 do
-  #java -jar /data/vkarthik/tools/macse2.jar -prog translateNT2AA -keep_final_stop_ON true -out_AA fasta/$filename/out/$key.AA.fasta -seq fasta/$filename/out/$key.fasta
-  ~/anaconda3/lib/R/bin/Rscript align_seqs.R fasta/$filename/out/$key.fasta fasta/$filename/$key.NT.aln
-  #python2 /data/vkarthik/tools/RevTrans-1.4/revtrans.py fasta/$filename/out/$key.fasta fasta/$filename/out/$key.AA.aln  -match trans > fasta/$filename/$key.NT.aln
+  java -jar /data/vkarthik/tools/macse2.jar -prog translateNT2AA -keep_final_stop_ON true -out_AA fasta/$filename/out/$key.AA.fasta -seq fasta/$filename/out/$key.fasta
+  #~/anaconda3/lib/R/bin/Rscript align_seqs.R fasta/$filename/out/$key.fasta fasta/$filename/$key.NT.aln
+  python2 /data/vkarthik/tools/RevTrans-1.4/revtrans.py fasta/$filename/out/$key.fasta fasta/$filename/out/$key.AA.aln  -match trans > fasta/$filename/$key.NT.aln
   sed 's/ /_/g' fasta/$filename/$key.NT.aln > fasta/$filename/out/$key.NT.aln
   rm fasta/$filename/$key.NT.aln
   nohup ~/anaconda3/lib/R/bin/Rscript stopcodon.R fasta/$filename/out/$key.NT.aln fasta/$filename/out/$key.newick "$filename.$key" &> fasta/$filename/out/$key.log &
